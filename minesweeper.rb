@@ -10,12 +10,15 @@ class Minesweeper
     @board.render
     over = false
 
+    start_time = Time.now.sec
+
     until over
       if @board.grid.flatten.none? {|tile| tile.tile_value == "*"}
         puts "You win!"
+        puts "The game lasted #{Time.now.sec - start_time} seconds."
         return
       end
-      
+
       puts "Pick a position"
       move = get_move
       x, y, f_or_r = move
